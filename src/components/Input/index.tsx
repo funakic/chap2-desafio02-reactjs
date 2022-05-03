@@ -12,12 +12,13 @@ import { Container } from './styles';
 
 interface InputProps {
   name: string;
+  placeholder?: string;
   icon?: ElementType;
-  filled: boolean;
-  focused: boolean;
+  filled?: boolean;
+  focused?: boolean;
 }
 
-export function Input({ name, icon: Icon, filled, focused, ...rest }: InputProps) {
+export function Input({ name, placeholder = '', icon: Icon, filled = false, focused = false, ...rest }: InputProps) {
 
 // const Input = ({ name, icon: Icon, ...rest }) => {
   const inputRef = useRef(null);
@@ -54,6 +55,7 @@ export function Input({ name, icon: Icon, filled, focused, ...rest }: InputProps
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
         ref={inputRef}
+        placeholder={placeholder}
         {...rest}
       />
     </Container>
